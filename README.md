@@ -1,9 +1,9 @@
-## ND9991 - C2- Infrastructure as Code - Supporting Material and Starter Code
-This folder provides the supporting material and starter code for the "ND9991 - C2- Infrastructure as Code" course. This folder contains the following folders:
-1. project_starter - It contains the starter code.
-2. supporting_material - It contains the essential files (.yml, .json, .bat, .sh, and .jpeg) that were referred in the different lessons of this course.
+## Project Title - Deploy a high-availability web app using CloudFormation
 
-In addition to the current repo, there is one more repository, [nd9991-c2-Infrastructure-as-Code-v1-Exercises_Solution](https://github.com/udacity/nd9991-c2-Infrastructure-as-Code-v1-Exercises_Solution) that contains the solution to the exercises and video demos.  
+This repo contains Cloud Formation Templates to deploy infrastructure shown below: a highly available web site on AWS
+
+![image](https://user-images.githubusercontent.com/99427790/224475443-b62e377a-b33e-4f3b-8738-79654af6e2db.png)
+
 
 ### Dependencies
 ##### 1. AWS account
@@ -16,15 +16,12 @@ An editor would be helpful to visualize the image as well as code. Download the 
 A free user-account on [www.lucidchart.com](www.lucidchart.com) is required to be able to draw the web app architecture diagrams for AWS.
 
 
-### How to run the supporting material?
-You can run the supporting material in two easy steps:
-```bash
-# Ensure that the AWS CLI is configured before runniing the command below
-# Create the network infrastructure
-# Check the region in the create.sh file
-./create.sh myFirstStack network.yml network-parameters.json
-# Create servers
-# Change the AMI ID and key-pair name in the servers.yml
-# Check the region in the update.sh file
-./update.sh mySecStack servers.yml server-parameters.json
-```
+### How to Create Stack
+To deploy any of the templates, use the command below upon successfully logging in to the aws cli
+
+aws cloudformation create-stack \
+	--stack-name "stackName" \
+	--template-body file://network-infrastructure.yml \
+	--parameters file://network-parameters.json \
+	--region=us-east-1 \
+	--capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
