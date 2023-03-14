@@ -28,6 +28,18 @@ A free user-account on [www.lucidchart.com](www.lucidchart.com) is required to b
 	- The application needs to be deployed into private subnets with a Load Balancer located in a public subnet.
 	- One of the output exports of the CloudFormation script should be the public URL of the LoadBalancer.
 
+### Other Considerations
+	- You can deploy your servers with an SSH Key into Public subnets while you are creating the script. This helps with troubleshooting. Once done, move them to your private subnets and remove the SSH Key from your Launch Configuration.
+	- It also helps to test directly, without the load balancer. Once you are confident that your server is behaving correctly, increase the instance count and add the load balancer to your script.
+	- While your instances are in public subnets, you'll also need the SSH port open (port 22) for your access, in case you need to troubleshoot your instances.
+	- Log information for UserData scripts is located in this file: cloud-init-output.log under the folder: /var/log.
+	- You should be able to destroy the entire infrastructure and build it back up without any manual steps required, other than running the CloudFormation scr
+	- 
+	- into your private subnet servers. This bastion host would be on a Public Subnet with port 22 open only to your home IP address, and it would need to have the private key that you use to access the other servers.
+	
+	
+	
+	
 ### How to Create Stack
 To deploy any of the templates, use the command below upon successfully logging in to the aws cli
 
