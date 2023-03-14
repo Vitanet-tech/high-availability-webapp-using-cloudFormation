@@ -18,7 +18,6 @@ A free user-account on [www.lucidchart.com](www.lucidchart.com) is required to b
 ## Project Requirements
 ### Server specs
 	- You'll need to create a Launch Configuration for your application servers in order to deploy four servers, two located in each of your private subnets. The launch configuration will be used by an auto-scaling group.
-### How to Create Stack
 	- You'll need two vCPUs and at least 4GB of RAM. The Operating System to be used is Ubuntu 18. So, choose an Instance size and Machine Image (AMI) that best fits this spec.
 	- Be sure to allocate at least 10GB of disk space so that you don't run into issues. 
 	
@@ -29,7 +28,7 @@ A free user-account on [www.lucidchart.com](www.lucidchart.com) is required to b
 	- The application needs to be deployed into private subnets with a Load Balancer located in a public subnet.
 	- One of the output exports of the CloudFormation script should be the public URL of the LoadBalancer.
 
-
+### How to Create Stack
 To deploy any of the templates, use the command below upon successfully logging in to the aws cli
 
 aws cloudformation create-stack \
