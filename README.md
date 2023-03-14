@@ -43,9 +43,11 @@ A free user-account on [www.lucidchart.com](www.lucidchart.com) is required to b
 ### How to Create Stack
 To deploy any of the templates, use the command below upon successfully logging in to the aws cli
 
+```
 aws cloudformation create-stack \
 	--stack-name "stackName" \
 	--template-body file://network-infrastructure.yml \
 	--parameters file://network-parameters.json \
 	--region=us-east-1 \
 	--capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
+```
