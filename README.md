@@ -44,10 +44,12 @@ A free user-account on [www.lucidchart.com](www.lucidchart.com) is required to b
 To deploy any of the templates, use the command below upon successfully logging in to the aws cli
 
 ```
-aws cloudformation create-stack \
-	--stack-name "stackName" \
-	--template-body file://network-infrastructure.yml \
-	--parameters file://network-parameters.json \
-	--region=us-east-1 \
-	--capabilities "CAPABILITY_IAM" "CAPABILITY_NAMED_IAM"
+# Ensure that the AWS CLI is configured before runniing the command below
+# Create the network infrastructure
+# Check the region in the create.sh file
+./create.sh myFirstStack network.yml network-parameters.json
+# Create servers
+# Change the AMI ID and key-pair name in the servers.yml
+# Check the region in the update.sh file
+./update.sh mySecStack servers.yml server-parameters.json
 ```
