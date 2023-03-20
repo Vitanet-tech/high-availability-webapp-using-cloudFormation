@@ -10,6 +10,7 @@ Parameters:
 
 
 Resources:
+#loadbalance SecurityGroup
   LBSecGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -27,6 +28,8 @@ Resources:
         FromPort: 80
         ToPort: 80
         CidrIp: 0.0.0.0/0
+        
+# EC2(webserver) SG        
   WebServerSecGroup:
     Type: AWS::EC2::SecurityGroup
     Properties:
@@ -48,6 +51,8 @@ Resources:
         FromPort: 0
         ToPort: 65535
         CidrIp: 0.0.0.0/0
+  
+  # Configuration of the Server
   WebAppLaunchConfig:
     Type: AWS::AutoScaling::LaunchConfiguration
     Properties:
@@ -70,6 +75,8 @@ Resources:
       - DeviceName: "/dev/sdk"
         Ebs:
           VolumeSize: '10'
+ 
+ # Create the AUtoScaling Group 
   WebAppGroup:
     Type: AWS::AutoScaling::AutoScalingGroup
     Properties:
@@ -82,6 +89,8 @@ Resources:
       MaxSize: '4'
       TargetGroupARNs:
       - Ref: WebAppTargetGroup
+  
+  # Create Elastic LoadBalancer
   WebAppLB:
     Type: AWS::ElasticLoadBalancingV2::LoadBalancer
     Properties:
